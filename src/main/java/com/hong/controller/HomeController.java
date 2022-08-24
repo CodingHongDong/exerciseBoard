@@ -21,7 +21,7 @@ import lombok.extern.log4j.Log4j;
 public class HomeController {
 	
 	@Autowired
-	private MemberService service;
+	private MemberService memberServiceImpl;
 	
 	// 메인 페이지
 	@GetMapping("/home.do")
@@ -44,18 +44,16 @@ public class HomeController {
 	// 사용자가 아이디와 비밀번호를 입력해서 보낸다. -> 받는다.
 	public String login(LoginVO invo, HttpSession session, RedirectAttributes rttr) throws Exception{
 		log.info("로그인 처리 - invo : " + invo);
-		invo = service.login(invo);
 		
-		if(invo==null) {
-			log.info("일치하는 정보 없음.");
-			rttr.addFlashAttribute("msg", "일치하는 정보가 없습니다.");
+		LoginVO loginVO = memberServiceImpl.login(invo);
+		
+		if (loginVO != null) {
+			session.setAttribute("login", loginVO);
+			return "redirect:/hong/home.do";
+		} else {
 			return "redirect:/hong/login.do";
 		}
 		
-		session.setAttribute("login", service.login(invo));
-	
-		// 원래는 main으로 보내야하나 main을 안 만들어서 만들어진 게시판으로 임시로 보낸다.
-		return "redirect:/hong/home.do";
 	}
 	
 	// 로그아웃 처리
@@ -68,5 +66,18 @@ public class HomeController {
 		
 		return "redirect:/hong/home.do";
 	}
+	
+	// 회원가입 폼
+	@GetMapping("/join.do")
+	public String joinForm() throws Exception{
+		log.info("회원가입 폼");
+		
+		return "hong/join";
+	}
+	
+	// 회원가입 처리
+	
+	// 아이디 중복 처리
+	
 	
 }

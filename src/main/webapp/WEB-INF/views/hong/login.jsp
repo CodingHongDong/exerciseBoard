@@ -19,16 +19,28 @@ if(msg != null && msg != ""){
 alert(msg);
 }
 </script>
+<style type="text/css">
+body {
+	background-color: #F7FFD9;
+}
+</style>
 
 <title>로그인 폼</title>
 </head>
 <body>
+
+<!-- 로고 -->
+<header>
+	<h1 class="text-center">
+		<a href="home.do"><img src="<c:url value="/resources/user/dog.jpg"/>"></a>
+	</h1>
+</header>
+
 <!-- login form -->
 <div class="container">
-	<div class="col-lg-4"></div>
-	<div class="col-lg-4">
-	<div class="jumbotron" style="padding-top: 20px;">
+	
 	<form action="login.do" method="post">
+	<div class="jumbotron" style="padding-top: 20px;">
 	<br>
 	<div class="form-group">
 		<input type="text" class="form-control" placeholder="id" name="id">

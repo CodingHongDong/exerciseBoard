@@ -57,12 +57,12 @@ ul li a:hover {
 <br>
 <div style="text-align:right; color: #3B3538;">
 <c:choose>
-	<c:when test="${sessionScope.id == null }">
+	<c:when test="${empty login}">
 		<a style="color:#5ADB87" href="login.do">login</a>
 		<a style="color:#5ADB87" href="join.do">join</a>
 	</c:when>
 	<c:otherwise>
-		<b>${sessionScope.id} &nbsp;&nbsp;</b>
+		<b>${!empty login} &nbsp;&nbsp;</b>
 		<a style="color: #D9418C" href="logout.do">logout</a>
 	</c:otherwise>
 </c:choose>
