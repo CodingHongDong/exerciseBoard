@@ -10,17 +10,21 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>회원가입 폼</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<title>회원가입</title>
 <style type="text/css">
 body {
 	background-color: #F7FFD9;
 }
+img {
+	margin: 10px;
+	height: 100px;
+	width: 100px;
+	float: left;
+}
 </style>
-</head>
-<body>
-<script src="<c:url value="/resources/user/js/bootstrap.min.js"/>"></script>
-
-
 <script type="text/javascript">
 $(function() {
 	
@@ -28,7 +32,7 @@ $(function() {
 	   var idCheck = false;
 	   var pwCheck = false;
 	
-	   // datepicker 클래스 이벤트 - 적정한 옵션을 넣어서 초기화 시켜 준다. 기본 datepicker()로 사용 가능
+		// datepicker 클래스 이벤트 - 적정한 옵션을 넣어서 초기화 시켜 준다. 기본 datepicker()로 사용 가능
 	   $(".datepicker").datepicker({
 		   changeMonth: true,
 		   changeYear: true,
@@ -48,14 +52,13 @@ $(function() {
 	      yearRange: yearRange
 	   });
 	   
-		// 아이디 체크 이벤트
+	// 아이디 체크 이벤트
 		$("#id").keyup(function() {
 			
 			idCheck = false;
 			
 			var id = $(this).val();
 			
-			// alert(id);
 			// 4자 미만 처리
 			if (id.length < 4) {
 				$("#idCheckDiv").removeClass("alert-success");
@@ -72,17 +75,17 @@ $(function() {
 			}
 			
 			// 서버로 가서 아이디 중복 체크를 하러가자 -> url과 입력 데이터는 바뀌면 안된다-. ->Ajax
-			// url /member/idCheck
+			// url /hong/idCheck
 			// 가져온 데이터가 null이면 사용가능, 있으면 중복
-			$("#idCheckDiv").load("/member/idCheck?id="+id, function(result) {
+			$("#idCheckDiv").load("/hong/idCheck?id="+id, function(result) {
 				
 				$("#idCheckDiv").removeClass("alert-success alert-danger");
 				if(result.indexOf("가능한") == -1) {
-					// 중복이 되지 않은 경우
+					// 중복된 아이디인 경우 배경은 빨간색
 					$("#idCheckDiv").addClass("alert-danger");
 					idCheck = false;
 				} else {
-					// 중복된 경우
+					// 사용가능한 아이디인 경우 배경은 파란색
 					$("#idCheckDiv").addClass("alert-success");
 					idCheck = true;
 				}
@@ -178,10 +181,10 @@ $(function() {
 		// 비밀번호 처리 이벤트의 끝
 		
 		// 회원가입 이벤트
-		$("#writeForm").submit(function() {
+		$("#joinForm").submit(function() {
 			
-			//alert("아이디 체크 : " + idCheck + "\n비밀번호 체크 : " + pwCheck);
-		
+			//alert("아이디 체크 : " + idCheck + "\n비밀번호 체크 : " + pwCheck)
+			
 			// 아이디 중복체크 - 사용 가능한 아이디 인지 확인
 			if(!idCheck) {
 				alert("중복이 되지 않는 적당한 형식의 아이디를 사용하셔야 합니다.");
@@ -199,55 +202,58 @@ $(function() {
 			
 			//return false; 
 		});
-						
-});	//$(funtion(){}) 의 끝
+});
 </script>
+</head>
+<body>
+<script src="<c:url value="/resources/user/js/bootstrap.min.js"/>"></script>
+
 <!-- 로고 -->
 <header>
 	<h1 class="text-center">
 		<a href="home.do"><img src="<c:url value="/resources/user/dog.jpg"/>"></a>
 	</h1>
 </header>
+
 <div class="container">
-		<h2>회원 가입 폼</h2>
-		<form action="join.do" method="post" enctype="multipart/form-data">
-			<div class="form-group">
-				<label for="id">아이디</label>
-				<input id="id" name="id" required="required" pattern="[A-Za-z0-9]{4,20}" placeholder="아이디 입력"
-				class="form-control" autocomplete="off">
-				<div id="idCheckDiv" class="alert alert-danger">아이디는 4자 이상 입력하셔야 합니다.</div>
-			</div>
-			<div class="form-group">
-				<label for="pw">비밀번호</label>
-				<input id="pw" name="pw" required="required" pattern=".{4,20}" placeholder="비밀번호 입력"	class="form-control" type="password">
-				<div id="pwCheckDiv" class="alert alert-danger">비밀번호는 4자 이상이여야 합니다.</div>
-			</div>
-			<div class="form-group">
-				<label for="pw2">비밀번호 확인</label>
-				<input id="pw2" name="pw2" required="required" pattern=".{4,20}" placeholder="비밀번호 확인"
-				class="form-control" type="password">
-				<div id="pw2CheckDiv" class="alert alert-danger">비밀번호는 4자 이상이여야 합니다.</div>
-			</div>
-			<div class="form-group">
-				<label for="name">이름</label>
-				<input id="name" name="name" required="required" pattern="[가-힣]{2,10}" placeholder="이름 입력"
-				class="form-control">
-			</div>
-			<div class="form-group">
-				<label for="birth">생년월일</label>
-				<input id="birth" name="birth" required="required" placeholder="yyyy-MM-dd"
-				class="form-control datepicker" autocomplete="off">
-			</div>
-			<div class="form-group">
-				<label for="email">이메일</label>
-				<input id="email" name="email" required="required" placeholder="email 입력"
-				class="form-control" type="email">
-			</div>		
-			<button class="btn btn-default">등록</button>
-			<button class="btn btn-default" type="reset">새로입력</button>
-			<button class="btn btn-default cancelBtn" type="button">취소</button>
-			
-		</form>
+	<form action="join.do" method="post" enctype="multipart/form-data" id="joinForm">
+		<div class="form-group">
+			<label for="id">아이디</label>
+			<input id="id" name="id" required="required" pattern="[A-Za-z0-9]{4,20}" placeholder="아이디 입력"
+			class="form-control" autocomplete="off">
+			<div id="idCheckDiv" class="alert alert-danger">아이디는 4자 이상 입력하셔야 합니다.</div>
+		</div>
+		<div class="form-group">
+			<label for="pw">비밀번호</label>
+			<input id="pw" name="pw" required="required" pattern=".{4,20}" placeholder="비밀번호 입력"	class="form-control" type="password">
+			<div id="pwCheckDiv" class="alert alert-danger">비밀번호는 4자 이상이여야 합니다.</div>
+		</div>
+		<div class="form-group">
+			<label for="pw2">비밀번호 확인</label>
+			<input id="pw2" name="pw2" required="required" pattern=".{4,20}" placeholder="비밀번호 확인"
+			class="form-control" type="password">
+			<div id="pw2CheckDiv" class="alert alert-danger">비밀번호는 4자 이상이여야 합니다.</div>
+		</div>
+		<div class="form-group">
+			<label for="name">이름</label>
+			<input id="name" name="name" required="required" pattern="[가-힣]{2,10}" placeholder="이름 입력"
+			class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="birth">생년월일</label>
+			<input id="birth" name="birth" required="required" placeholder="yyyy-MM-dd"
+			class="form-control datepicker" autocomplete="off">
+		</div>
+		<div class="form-group">
+			<label for="email">이메일</label>
+			<input id="email" name="email" required="required" placeholder="email 입력"
+			class="form-control" type="email">
+		</div>
+		
+		<button class="btn btn-default">등록</button>
+		<button class="btn btn-default" type="reset">새로입력</button>
+		<button class="btn btn-default" type="button" onclick="location.href='home.do'">취소</button>
+	</form>
 </div>
 </body>
 </html>

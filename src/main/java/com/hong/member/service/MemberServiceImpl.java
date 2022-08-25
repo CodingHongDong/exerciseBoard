@@ -6,8 +6,12 @@ import org.springframework.stereotype.Service;
 
 import com.hong.member.mapper.MemberMapper;
 import com.hong.member.vo.LoginVO;
+import com.hong.member.vo.MemberVO;
+
+import lombok.extern.log4j.Log4j;
 
 @Service
+@Log4j
 public class MemberServiceImpl implements MemberService {
 
 	@Inject
@@ -18,6 +22,20 @@ public class MemberServiceImpl implements MemberService {
 	public LoginVO login(LoginVO invo) throws Exception {
 		
 		return mapper.login(invo);
+	}
+
+	// 회원가입 처리
+	@Override
+	public int join(MemberVO vo) throws Exception {
+		log.info("회원가입 처리가 되야함..! vo : " + vo);
+		return mapper.join(vo);
+	}
+
+	// id 중복 처리
+	@Override
+	public String idCheck(String id) throws Exception {
+		
+		return mapper.idCheck(id);
 	}
 
 }

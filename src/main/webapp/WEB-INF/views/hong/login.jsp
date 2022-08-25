@@ -12,13 +12,6 @@
 <script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="<c:url value="/resources/user/js/bootstrap.min.js"/>"></script>
-<script type="text/javascript">
-var msg = '${msg}';
-console.log(msg);
-if(msg != null && msg != ""){
-alert(msg);
-}
-</script>
 <style type="text/css">
 body {
 	background-color: #F7FFD9;
@@ -40,7 +33,7 @@ body {
 <div class="container">
 	
 	<form action="login.do" method="post">
-	<div class="jumbotron" style="padding-top: 20px;">
+	
 	<br>
 	<div class="form-group">
 		<input type="text" class="form-control" placeholder="id" name="id">
@@ -53,11 +46,10 @@ body {
 		<input type="submit" class="form-control" style="background-color: #2983a6; color: white;" value="로그인">
 	</div>
 	<div class="from-group">
-		<a href="register.do" class="form-control" style="background-color: #2983a6; text-align: center; color: white;">회원가입</a>
+		<a href="join.do" class="form-control" style="background-color: #2983a6; text-align: center; color: white;">회원가입</a>
 	</div>
+	
 	</form>
-	</div>
-	</div>
 </div>
 </body>
 </html>

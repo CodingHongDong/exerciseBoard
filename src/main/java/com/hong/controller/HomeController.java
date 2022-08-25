@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hong.member.service.MemberService;
 import com.hong.member.vo.LoginVO;
+import com.hong.member.vo.MemberVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -49,6 +51,7 @@ public class HomeController {
 		
 		if (loginVO != null) {
 			session.setAttribute("login", loginVO);
+			
 			return "redirect:/hong/home.do";
 		} else {
 			return "redirect:/hong/login.do";
@@ -76,8 +79,27 @@ public class HomeController {
 	}
 	
 	// 회원가입 처리
+	@PostMapping("/join.do")
+	public String join(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
+		
+		memberServiceImpl.join(vo);
+		
+		rttr.addFlashAttribute("msg", "성공적으로 회원가입이 되셨습니다. \\n로그인 후 사용하세요");
+		
+		log.info("회원가입 성공 ! vo : " + vo);
+		
+		return "redirect:/hong/login.do";
+	}
 	
 	// 아이디 중복 처리
-	
+	@GetMapping("/idCheck")
+	public String idCheck(String id, Model model) throws Exception {
+		
+		model.addAttribute("id", memberServiceImpl.idCheck(id));
+		
+		log.info("아이디 중복 체크 : " + id);
+		
+		return "hong/idCheck";
+	}
 	
 }
