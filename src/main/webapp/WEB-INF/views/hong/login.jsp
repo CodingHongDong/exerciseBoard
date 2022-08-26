@@ -46,7 +46,7 @@ body {
 		<input type="submit" class="form-control" style="background-color: #2983a6; color: white;" value="로그인">
 	</div>
 	<div class="from-group">
-		<a href="join.do" class="form-control" style="background-color: #2983a6; text-align: center; color: white;">회원가입</a>
+		<a href="write.do" class="form-control" style="background-color: #2983a6; text-align: center; color: white;">회원가입</a>
 	</div>
 	
 	</form>

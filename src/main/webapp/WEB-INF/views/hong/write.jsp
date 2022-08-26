@@ -22,7 +22,7 @@ img {
 	margin: 10px;
 	height: 100px;
 	width: 100px;
-	float: left;
+	float: none;
 }
 </style>
 <script type="text/javascript">
@@ -181,7 +181,7 @@ $(function() {
 		// 비밀번호 처리 이벤트의 끝
 		
 		// 회원가입 이벤트
-		$("#joinForm").submit(function() {
+		$("#writeForm").submit(function() {
 			
 			//alert("아이디 체크 : " + idCheck + "\n비밀번호 체크 : " + pwCheck)
 			
@@ -216,36 +216,36 @@ $(function() {
 </header>
 
 <div class="container">
-	<form action="join.do" method="post" enctype="multipart/form-data" id="joinForm">
+	<form action="write.do" method="post" id="writeForm">
 		<div class="form-group">
-			<label for="id">아이디</label>
+			<label>아이디</label>
 			<input id="id" name="id" required="required" pattern="[A-Za-z0-9]{4,20}" placeholder="아이디 입력"
 			class="form-control" autocomplete="off">
 			<div id="idCheckDiv" class="alert alert-danger">아이디는 4자 이상 입력하셔야 합니다.</div>
 		</div>
 		<div class="form-group">
-			<label for="pw">비밀번호</label>
+			<label>비밀번호</label>
 			<input id="pw" name="pw" required="required" pattern=".{4,20}" placeholder="비밀번호 입력"	class="form-control" type="password">
 			<div id="pwCheckDiv" class="alert alert-danger">비밀번호는 4자 이상이여야 합니다.</div>
 		</div>
 		<div class="form-group">
-			<label for="pw2">비밀번호 확인</label>
+			<label>비밀번호 확인</label>
 			<input id="pw2" name="pw2" required="required" pattern=".{4,20}" placeholder="비밀번호 확인"
 			class="form-control" type="password">
 			<div id="pw2CheckDiv" class="alert alert-danger">비밀번호는 4자 이상이여야 합니다.</div>
 		</div>
 		<div class="form-group">
-			<label for="name">이름</label>
+			<label>이름</label>
 			<input id="name" name="name" required="required" pattern="[가-힣]{2,10}" placeholder="이름 입력"
 			class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="birth">생년월일</label>
+			<label>생년월일</label>
 			<input id="birth" name="birth" required="required" placeholder="yyyy-MM-dd"
 			class="form-control datepicker" autocomplete="off">
 		</div>
 		<div class="form-group">
-			<label for="email">이메일</label>
+			<label>이메일</label>
 			<input id="email" name="email" required="required" placeholder="email 입력"
 			class="form-control" type="email">
 		</div>

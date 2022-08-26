@@ -71,20 +71,18 @@ public class HomeController {
 	}
 	
 	// 회원가입 폼
-	@GetMapping("/join.do")
-	public String joinForm() throws Exception{
+	@GetMapping("/write.do")
+	public String writeForm() throws Exception{
 		log.info("회원가입 폼");
 		
-		return "hong/join";
+		return "hong/write";
 	}
 	
 	// 회원가입 처리
-	@PostMapping("/join.do")
-	public String join(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
+	@PostMapping("/write.do")
+	public String write(MemberVO vo) throws Exception{
 		
-		memberServiceImpl.join(vo);
-		
-		rttr.addFlashAttribute("msg", "성공적으로 회원가입이 되셨습니다. \\n로그인 후 사용하세요");
+		memberServiceImpl.write(vo);
 		
 		log.info("회원가입 성공 ! vo : " + vo);
 		

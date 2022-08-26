@@ -59,7 +59,7 @@ ul li a:hover {
 <c:choose>
 	<c:when test="${empty login}">
 		<a style="color:#5ADB87" href="login.do">login</a>
-		<a style="color:#5ADB87" href="join.do">join</a>
+		<a style="color:#5ADB87" href="write.do">join</a>
 	</c:when>
 	<c:otherwise>
 		<b>${!empty login} &nbsp;&nbsp;</b>
@@ -78,10 +78,10 @@ ul li a:hover {
 <!-- nav -->
 <nav>
 	<ul>
-		<li><b><a href="fitnessboard.do">fitness</a></b></li>
-		<li><b><a href="runningboard.do">running</a></b></li>
-		<li><b><a href="pilatesboard.do">pilates</a></b></li>
-		<li><b><a href="freeboard.do">자유게시판</a></b></li>	
+		<li><b><a href="fitnessboard/list.do">fitness</a></b></li>
+		<li><b><a href="runningboard/list.do">running</a></b></li>
+		<li><b><a href="pilatesboard/list.do">pilates</a></b></li>
+		<li><b><a href="freeboard/list.do">자유게시판</a></b></li>	
 	</ul>
 </nav>
 

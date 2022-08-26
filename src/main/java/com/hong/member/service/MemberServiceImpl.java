@@ -2,6 +2,7 @@ package com.hong.member.service;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.hong.member.mapper.MemberMapper;
@@ -17,18 +18,23 @@ public class MemberServiceImpl implements MemberService {
 	@Inject
 	private MemberMapper mapper;
 	
+	
 	// 로그인 처리
 	@Override
 	public LoginVO login(LoginVO invo) throws Exception {
+		
+		log.info("invo : " + invo);
 		
 		return mapper.login(invo);
 	}
 
 	// 회원가입 처리
 	@Override
-	public int join(MemberVO vo) throws Exception {
-		log.info("회원가입 처리가 되야함..! vo : " + vo);
-		return mapper.join(vo);
+	public int write(MemberVO vo) throws Exception {
+		
+		log.info("vo : " + vo);
+		
+		return mapper.write(vo);
 	}
 
 	// id 중복 처리

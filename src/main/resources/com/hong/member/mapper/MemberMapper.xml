@@ -9,9 +9,9 @@
 	</select>
 	
 	<!-- 회원가입 처리 -->
-	<insert id="join">
-		insert into member(id, pw, name, birth, email)  
-		values(#{id},#{pw},#{name},#{birth},#{email})
+	<insert id="write">
+		insert into member(id, pw, name, birth, email) 
+		values (#{id}, #{pw}, #{name}, #{birth}, #{email})
 	</insert>
 	
 	<!-- id 중복 체크 처리 -->

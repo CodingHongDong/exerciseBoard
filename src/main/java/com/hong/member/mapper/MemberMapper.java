@@ -9,7 +9,7 @@ public interface MemberMapper {
 	public LoginVO login(LoginVO invo) throws Exception;
 	
 	// 회원가입 처리
-	public int join(MemberVO vo) throws Exception;
+	public int write(MemberVO vo) throws Exception;
 	
 	// 아이디 중복 체크
 	public String idCheck(String id) throws Exception;
