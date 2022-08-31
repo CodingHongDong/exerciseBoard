@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>회원가입</title>
-<style type="text/css">
+<style>
 body {
 	background-color: #F7FFD9;
 }

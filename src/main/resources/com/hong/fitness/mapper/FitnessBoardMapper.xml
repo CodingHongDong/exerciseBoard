@@ -9,5 +9,24 @@
 		from fitnessboard order by no desc  
 	</select>
 
-
+	<!-- view -->
+	<select id="view" resultType="com.hong.fitness.vo.FitnessBoardVO">
+		select no, title, content, memberId, regDate, hit 
+		from fitnessboard where no=#{no}		
+	</select>
+	
+	<!-- write -->
+	<insert id="write">
+		insert into fitnessboard(no, title, content, memberId) 
+		values (#{no}, #{title}, #{content}, #{memberId})
+	</insert>
+	
+	<!-- update -->
+	<update id="update">
+		update fitnessboard set title=#{title}, content=#{content}, memberId=#{memberId} 
+		where no=#{no}
+	</update>
+	
+	<!-- delete -->
+	
 </mapper>

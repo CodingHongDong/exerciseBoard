@@ -13,11 +13,43 @@
 		href="<c:url value="/resources/user/css/bootstrap.min.css" />">
 <script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script src="<c:url value="/resources/user/js/bootstrap.min.js"/>"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript">
+$(function() {
+	$(".dataRow").click(function() {
+		var no = $(this).find(".no").text();
+		location = "view.do?no=" + no
+	});
+});
+</script>
+<style type="text/css">
+body {
+	background-color: #F7FFD9;
+}
+
+.dataRow:hover {
+	background: #eee;
+	cursor: pointer;
+	}
+
+img {
+	margin: 10px;
+	height: 100px;
+	width: 100px;
+	float: none;
+}
+</style>
 </head>
 <body>
+<!-- 로고 -->
+<header>
+	<h1 class="text-center">
+		<a href="home.do"><img src="<c:url value="/resources/user/dog.jpg"/>"></a>
+	</h1>
+</header>
+
 <div class="container">
 <h2>Fitness 게시판 > 리스트</h2>
-${list }
 <table class="table">
 	<tr>
 		<th>번호</th>
@@ -27,12 +59,12 @@ ${list }
 		<th>조회수</th>
 	</tr>
 	
-	<c:forEach items="${list}" var="vo">
+	<c:forEach items="${vo}" var="vo">
 	<tr class="dataRow">
-		<td class="no">${vo.no }</td>
-		<td>${vo.title }</td>
-		<td>${vo.memberId }</td>
-		<td><fmt:formatDate value="${vo.regDate }" pattern="yyyy-MM-dd"/> </td>
+		<td class="no">${vo.no}</td>
+		<td>${vo.title}</td>
+		<td>${vo.memberId}</td>
+		<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd"/> </td>
 		<td>${vo.hit}</td>
 	</tr>
 	</c:forEach>

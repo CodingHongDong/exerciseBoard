@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hong.fitness.service.FitnessBoardService;
@@ -39,7 +40,9 @@ public class FitnessBoardController {
 	@GetMapping("/view.do")
 	public String view(long no, Model model) throws Exception {
 		
-		log.info("fitness board 글보기");
+		log.info("fitness board 글보기 no : " + no);
+		
+		model.addAttribute("vo", fitnessBoardServiceImpl.view(no));
 		
 		return "hong/fitnessboard/view";
 	}
@@ -55,10 +58,38 @@ public class FitnessBoardController {
 	}
 	
 	// 게시판 글쓰기 처리
+	@PostMapping("/write.do")
+	public String write(FitnessBoardVO vo) throws Exception {
+		
+		log.info("게시판 글쓰기 처리 vo : " + vo);
+		
+		fitnessBoardServiceImpl.write(vo);
+		
+		return "redirect:list.do";
+	}
 	
 	// 게시판 글수정 폼
+	@GetMapping("/update.do")
+	public String updateForm(long no, Model model) throws Exception{
+		
+		log.info("이미지 게시판 수정 폼 no : " + no);
+		
+		model.addAttribute("vo", fitnessBoardServiceImpl.view(no));
+		
+		return "hong/fitness/update";
+	}
 	
 	// 게시판 글수정 처리
+	@PostMapping("/update.do")
+	public String update(FitnessBoardVO vo) throws Exception {
+		
+		log.info("게시판 글 수정 처리 vo : " + vo);
+		
+		fitnessBoardServiceImpl.update(vo);
+		
+		return "redirect:view.do?no=" + vo.getNo();
+	}
+	
 	
 	// 게시판 글삭제
 }
