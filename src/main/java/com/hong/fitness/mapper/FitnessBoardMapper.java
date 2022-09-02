@@ -17,4 +17,7 @@ public interface FitnessBoardMapper {
 	
 	// 게시판 글 수정
 	public int update(FitnessBoardVO vo) throws Exception;
+	
+	// 게시판 글 삭제
+	public int delete(long no) throws Exception;
 }

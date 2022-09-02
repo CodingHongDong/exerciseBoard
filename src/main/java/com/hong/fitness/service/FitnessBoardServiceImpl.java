@@ -22,8 +22,6 @@ public class FitnessBoardServiceImpl implements FitnessBoardService {
 	@Override
 	public List<FitnessBoardVO> list() throws Exception {
 		
-		log.info("fitness 게시판 리스트");
-		
 		return mapper.list();
 	}
 
@@ -39,17 +37,24 @@ public class FitnessBoardServiceImpl implements FitnessBoardService {
 	@Override
 	public int write(FitnessBoardVO vo) throws Exception {
 		
-		
 		return mapper.write(vo);
 	}
 
 	// 게시판 글 수정
 	@Override
 	public int update(FitnessBoardVO vo) throws Exception {
-		// TODO Auto-generated method stub
+		
+		log.info("업데이트 vo : " + vo);
+		
 		return mapper.update(vo);
 	}
 
 	// 게시판 글 삭제
+	@Override
+	public int delete(long no) throws Exception {
+		
+		return mapper.delete(no);
+	}
+
 	
 }

@@ -14,36 +14,58 @@
 <meta charset="UTF-8">
 <style type="text/css">
 body {
-	background-color: #afe0b3;
+	background-color: #ba54ae;
 }
 </style>
-<title>Fitness Board</title>
+<script type="text/javascript">
+$(function() {
+	$("#deleteBtn").click(function() {
+		return confirm("정말 삭제하시겠습니까?");
+	});
+})
+</script>
+<title>Pilates Board</title>
 </head>
 <body>
-<h2>Fitness 게시판 > 글쓰기</h2>
-<form action="write.do" method="post">
 <div class="container">
+<h2>Pilates Board > 글보기</h2>
 <table class="table">
 	<tr>
+		<th>번호</th>
+		<td>${vo.no}</td>
+	</tr>
+	
+	<tr>
 		<th>제목</th>
-		<td><input name="title"></td>
+		<td>${vo.title}</td>
 	</tr>
 	
 	<tr>
 		<th>내용</th>
-		<td><textarea rows="5" style="width: 600px;" name="content"></textarea> </td>
+		<td>${vo.content}</td>
 	</tr>
 	
 	<tr>
 		<th>작성자</th>
-		<td><input name="memberId"></td>
+		<td>${vo.memberId}</td>
 	</tr>
 	
 	<tr>
-		<td colspan="2"><button class="btn btn-default">등록</button></td>
+		<th>작성일</th>
+		<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd"/></td>
 	</tr>
+	
+	<tr>
+		<th>조회수</th>
+		<td>${vo.hit}</td>
+	</tr>
+	
 </table>
+	<div>
+		<a href="update.do?no=${vo.no}" class="btn btn-default">수정</a>
+		<a href="delete.do?no=${vo.no}"	class="btn btn-default" id="deleteBtn">삭제</a>
+		<a href="list.do" class="btn btn-default">리스트</a>
+	</div>
 </div>
-</form>
 </body>
 </html>

@@ -13,14 +13,14 @@
 <meta charset="UTF-8">
 <style type="text/css">
 body {
-	background-color: #e6e5dc;
+	background-color: #46b8a1;
 }
 </style>
-<title>Free Board</title>
+<title>Running Board</title>
 </head>
 <body>
 <div class="container">
-<h2>Free Board > 글수정</h2>
+<h2>Running Board > 글수정</h2>
 <form action="update.do" method="post">
 <input type="hidden" name="no" value="${param.no}">
 <table class="table">

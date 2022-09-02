@@ -14,14 +14,21 @@
 <meta charset="UTF-8">
 <style type="text/css">
 body {
-	background-color: #F7FFD9;
+	background-color: #afe0b3;
 }
 </style>
-<title>Fitness Board View</title>
+<script type="text/javascript">
+$(function() {
+	$("#deleteBtn").click(function() {
+		return confirm("정말 삭제하시겠습니까?");
+	});
+})
+</script>
+<title>Fitness Board</title>
 </head>
 <body>
 <div class="container">
-<h2>Fitness 게시판 > 글보기</h2>
+<h2>Fitness Board > 글보기</h2>
 <table class="table">
 	<tr>
 		<th>번호</th>
@@ -30,7 +37,7 @@ body {
 	
 	<tr>
 		<th>제목</th>
-		<td>${vo.title }</td>
+		<td>${vo.title}</td>
 	</tr>
 	
 	<tr>
@@ -54,10 +61,11 @@ body {
 	</tr>
 	
 </table>
-<br>
-	<a href="update.do?no=${vo.no}" class="btn btn-default">수정</a>
-	<a href="delete.do?no=${vo.no}"	class="btn btn-default">삭제</a>
-	<a href="list.do" class="btn btn-default">리스트</a>
+	<div>
+		<a href="update.do?no=${vo.no}" class="btn btn-default">수정</a>
+		<a href="delete.do?no=${vo.no}"	class="btn btn-default" id="deleteBtn">삭제</a>
+		<a href="list.do" class="btn btn-default">리스트</a>
+	</div>
 </div>
 </body>
 </html>

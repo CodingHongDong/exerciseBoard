@@ -24,7 +24,7 @@ $(function() {
 </script>
 <style type="text/css">
 body {
-	background-color: #F7FFD9;
+	background-color: #afe0b3;
 }
 
 .dataRow:hover {

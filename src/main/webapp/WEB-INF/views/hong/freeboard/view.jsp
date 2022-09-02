@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="with=divice-width,initial-scale=1">
 <link rel="stylesheet" 
 		href="<c:url value="/resources/user/css/bootstrap.min.css" />">
@@ -16,43 +17,55 @@ body {
 	background-color: #e6e5dc;
 }
 </style>
+<script type="text/javascript">
+$(function() {
+	$("#deleteBtn").click(function() {
+		return confirm("정말 삭제하시겠습니까?");
+	});
+})
+</script>
 <title>Free Board</title>
 </head>
 <body>
 <div class="container">
-<h2>Free Board > 글수정</h2>
-<form action="update.do" method="post">
-<input type="hidden" name="no" value="${param.no}">
+<h2>Free Board > 글보기</h2>
 <table class="table">
 	<tr>
 		<th>번호</th>
-		<td><input name="no" value="${vo.no}" readonly="readonly"></td>
+		<td>${vo.no}</td>
 	</tr>
 	
 	<tr>
 		<th>제목</th>
-		<td><input name="title" value="${vo.title}"></td>
+		<td>${vo.title}</td>
 	</tr>
 	
 	<tr>
 		<th>내용</th>
-		<td><textarea rows="5" style="width: 600px;" name="content">${vo.content}</textarea></td>
+		<td>${vo.content}</td>
 	</tr>
 	
 	<tr>
 		<th>작성자</th>
-		<td><input name="memberId" value="${vo.memberId}"></td>
+		<td>${vo.memberId}</td>
 	</tr>
 	
 	<tr>
-		<td colspan="2">
-			<button class="btn btn-default">수정</button>
-			<button type="reset" class="btn btn-default">새로입력</button>
-			<button type="button" onclick="history.back()" class="btn btn-default">취소</button>
-		</td>
+		<th>작성일</th>
+		<td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd"/></td>
 	</tr>
+	
+	<tr>
+		<th>조회수</th>
+		<td>${vo.hit}</td>
+	</tr>
+	
 </table>
-</form>
+	<div>
+		<a href="update.do?no=${vo.no}" class="btn btn-default">수정</a>
+		<a href="delete.do?no=${vo.no}"	class="btn btn-default" id="deleteBtn">삭제</a>
+		<a href="list.do" class="btn btn-default">리스트</a>
+	</div>
 </div>
 </body>
 </html>

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="with=divice-width,initial-scale=1">
 <link rel="stylesheet" 
 		href="<c:url value="/resources/user/css/bootstrap.min.css" />">
@@ -13,46 +14,36 @@
 <meta charset="UTF-8">
 <style type="text/css">
 body {
-	background-color: #e6e5dc;
+	background-color: #46b8a1;
 }
 </style>
-<title>Free Board</title>
+<title>Running Board</title>
 </head>
 <body>
+<h2>Running 게시판 > 글쓰기</h2>
+<form action="write.do" method="post">
 <div class="container">
-<h2>Free Board > 글수정</h2>
-<form action="update.do" method="post">
-<input type="hidden" name="no" value="${param.no}">
 <table class="table">
 	<tr>
-		<th>번호</th>
-		<td><input name="no" value="${vo.no}" readonly="readonly"></td>
-	</tr>
-	
-	<tr>
 		<th>제목</th>
-		<td><input name="title" value="${vo.title}"></td>
+		<td><input name="title"></td>
 	</tr>
 	
 	<tr>
 		<th>내용</th>
-		<td><textarea rows="5" style="width: 600px;" name="content">${vo.content}</textarea></td>
+		<td><textarea rows="5" style="width: 600px;" name="content"></textarea> </td>
 	</tr>
 	
 	<tr>
 		<th>작성자</th>
-		<td><input name="memberId" value="${vo.memberId}"></td>
+		<td><input name="memberId"></td>
 	</tr>
 	
 	<tr>
-		<td colspan="2">
-			<button class="btn btn-default">수정</button>
-			<button type="reset" class="btn btn-default">새로입력</button>
-			<button type="button" onclick="history.back()" class="btn btn-default">취소</button>
-		</td>
+		<td colspan="2"><button class="btn btn-default">등록</button></td>
 	</tr>
 </table>
-</form>
 </div>
+</form>
 </body>
 </html>
