@@ -44,6 +44,8 @@ public class RunningBoardController {
 		
 		model.addAttribute("vo", runningBoardServiceImpl.view(no));
 		
+		runningBoardServiceImpl.increase(no);
+		
 		return "hong/runningboard/view";
 	}
 	

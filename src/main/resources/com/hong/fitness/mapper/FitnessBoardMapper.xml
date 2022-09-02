@@ -15,6 +15,11 @@
 		from fitnessboard where no=#{no}		
 	</select>
 	
+	<!-- 조회수 1증가 - update -->
+	<update id="increase">
+		update fitnessboard set hit = hit + 1 where no = #{no}
+	</update>
+	
 	<!-- write -->
 	<insert id="write">
 		insert into fitnessboard(no, title, content, memberId) 

@@ -44,6 +44,8 @@ public class FitnessBoardController {
 		
 		model.addAttribute("vo", fitnessBoardServiceImpl.view(no));
 		
+		fitnessBoardServiceImpl.increase(no);
+		
 		return "hong/fitnessboard/view";
 	}
 	

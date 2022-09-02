@@ -15,6 +15,11 @@
 		from runningboard where no=#{no}		
 	</select>
 	
+	<!-- 조회수 1증가 - update -->
+	<update id="increase">
+		update runningboard set hit = hit + 1 where no = #{no}
+	</update>	
+	
 	<!-- write -->
 	<insert id="write">
 		insert into runningboard(no, title, content, memberId) 

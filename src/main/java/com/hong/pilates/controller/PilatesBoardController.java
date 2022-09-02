@@ -44,6 +44,8 @@ public class PilatesBoardController {
 		
 		model.addAttribute("vo", pilatesBoardServiceImpl.view(no));
 		
+		pilatesBoardServiceImpl.increase(no);
+		
 		return "hong/pilatesboard/view";
 	}
 	

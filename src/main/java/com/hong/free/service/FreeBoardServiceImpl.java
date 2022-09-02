@@ -45,4 +45,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		return mapper.delete(no);
 	}
 
+	@Override
+	public int increase(long no) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.increase(no);
+	}
+
 }

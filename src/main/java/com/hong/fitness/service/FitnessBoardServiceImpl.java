@@ -56,5 +56,12 @@ public class FitnessBoardServiceImpl implements FitnessBoardService {
 		return mapper.delete(no);
 	}
 
+	// 조회수 1 증가
+	@Override
+	public int increase(long no) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.increase(no);
+	}
+
 	
 }

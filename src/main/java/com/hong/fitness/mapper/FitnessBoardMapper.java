@@ -20,4 +20,7 @@ public interface FitnessBoardMapper {
 	
 	// 게시판 글 삭제
 	public int delete(long no) throws Exception;
+	
+	// 조회수 1 증가
+	public int increase(long no) throws Exception;
 }

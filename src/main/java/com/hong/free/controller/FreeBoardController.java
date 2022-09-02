@@ -43,6 +43,8 @@ public class FreeBoardController {
 		
 		model.addAttribute("vo", freeBoardServiceImpl.view(no));
 		
+		freeBoardServiceImpl.increase(no);
+		
 		return "hong/freeboard/view";
 	}
 	
