@@ -20,11 +20,22 @@ $(function() {
 		var no = $(this).find(".no").text();
 		location = "view.do?no=" + no
 	});
+	
+	$(".img").click(function() {
+		location = "home.do"
+	});
+	
 });
 </script>
 <style type="text/css">
 body {
 	background-color: #afe0b3;
+}
+
+footer {
+	background-color: black;
+	padding: 25px;
+	color: #ddd;
 }
 
 .dataRow:hover {
@@ -44,7 +55,7 @@ img {
 <!-- 로고 -->
 <header>
 	<h1 class="text-center">
-		<a href="home.do"><img src="<c:url value="/resources/user/dog.jpg"/>"></a>
+		<img class="img" src="<c:url value="/resources/user/dog.jpg"/>">
 	</h1>
 </header>
 
@@ -76,5 +87,11 @@ img {
 	</tr>
 </table>
 </div>
+	
+	<!-- footer -->
+	<footer class="container-fluid text-center navbar navbar-inverse navbar-fixed-bottom">
+		<p>CodingHongDong</p>
+	</footer>
+
 </body>
 </html>
