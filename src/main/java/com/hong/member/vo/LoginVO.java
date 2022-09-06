@@ -12,6 +12,6 @@ public class LoginVO {
 	private String name;
 	private Date birth;
 	private String email;
-	private String status;
+	private int status;
 	
 }

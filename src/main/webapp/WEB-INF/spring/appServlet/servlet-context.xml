@@ -23,6 +23,11 @@
 	
 	<context:component-scan base-package="com.hong" />
 	
-	
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:bean class="com.hong.util.interceptor.HongInterceptor" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

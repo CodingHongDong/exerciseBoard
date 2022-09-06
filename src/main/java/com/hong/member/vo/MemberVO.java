@@ -12,6 +12,6 @@ public class MemberVO {
 	private String name;
 	private String birth;
 	private String email;
-	private String status;
+	private int status;
 	
 }
