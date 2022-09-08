@@ -4,9 +4,16 @@
 <mapper namespace="com.hong.fitness.mapper.FitnessBoardMapper">
 
 	<!-- list -->
-	<select id="list" resultType="com.hong.fitness.vo.FitnessBoardVO">
-		select no, title, memberId, regDate, hit  
-		from fitnessboard order by no desc  
+	<select id="list" resultType="com.hong.fitness.vo.FitnessBoardVO">	
+        SELECT * FROM fitnessboard 
+        ORDER BY no DESC 
+        LIMIT #{pageStart}, #{perPageNum}
+       
+	</select>
+
+	<!-- 전체 데이터 개수 가져오기 -->
+	<select id="totalCount" resultType="Integer">
+		select count(*) from fitnessboard
 	</select>
 
 	<!-- view -->

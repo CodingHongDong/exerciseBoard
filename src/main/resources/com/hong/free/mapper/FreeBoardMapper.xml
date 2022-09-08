@@ -9,6 +9,11 @@
 		from freeboard order by no desc  
 	</select>
 
+	<!-- 전체 데이터 개수 가져오기 -->
+	<select id="getTotalRow" resultType="java.lang.Long">
+		select count(*) from freeboard
+	</select>
+
 	<!-- view -->
 	<select id="view" resultType="com.hong.free.vo.FreeBoardVO">
 		select no, title, content, memberId, regDate, hit 

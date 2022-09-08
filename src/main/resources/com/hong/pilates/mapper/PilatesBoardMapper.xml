@@ -9,6 +9,11 @@
 		from pilatesboard order by no desc  
 	</select>
 
+	<!-- 전체 데이터 개수 가져오기 -->
+	<select id="getTotalRow" resultType="java.lang.Long">
+		select count(*) from pilatesboard
+	</select>
+
 	<!-- view -->
 	<select id="view" resultType="com.hong.pilates.vo.PilatesBoardVO">
 		select no, title, content, memberId, regDate, hit 

@@ -9,6 +9,9 @@ public interface FreeBoardMapper {
 	// 게시판 리스트
 	public List<FreeBoardVO> list() throws Exception;
 	
+	// 전체 데이터 개수
+	public long getTotalRow() throws Exception;
+	
 	// 게시판 글보기
 	public FreeBoardVO view(long no) throws Exception;
 	

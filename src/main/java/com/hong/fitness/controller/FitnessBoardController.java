@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hong.fitness.service.FitnessBoardService;
 import com.hong.fitness.vo.FitnessBoardVO;
+import com.hong.util.domain.Criteria;
+import com.hong.util.domain.Pagenation;
 
 import lombok.extern.log4j.Log4j;
 
@@ -25,13 +27,19 @@ public class FitnessBoardController {
 	
 	// 게시판 리스트
 	@GetMapping("/list.do")
-	public String list(Model model) throws Exception {
+	public String list(Model model, Criteria criteria) throws Exception {
 		
-		List<FitnessBoardVO> list = fitnessBoardServiceImpl.list();
+		List<FitnessBoardVO> list = fitnessBoardServiceImpl.list(criteria);
 		
 		log.info("게시판 리스트");
 		
 		model.addAttribute("vo", list);
+		
+		Pagenation pageNation = new Pagenation();
+		pageNation.setCriteria(criteria);
+		pageNation.setTotalCount(fitnessBoardServiceImpl.totalCount());
+		
+		model.addAttribute("pagenation", pageNation);
 		
 		return "hong/fitnessboard/list";
 	}

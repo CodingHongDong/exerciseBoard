@@ -9,6 +9,9 @@ public interface PilatesBoardMapper {
 	// 게시판 리스트
 	public List<PilatesBoardVO> list() throws Exception;
 	
+	// 전체 데이터 개수
+	public long getTotalRow() throws Exception;
+	
 	// 게시판 글보기
 	public PilatesBoardVO view(long no) throws Exception;
 	
