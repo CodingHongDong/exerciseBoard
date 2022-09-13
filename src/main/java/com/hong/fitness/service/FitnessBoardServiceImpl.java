@@ -23,6 +23,8 @@ public class FitnessBoardServiceImpl implements FitnessBoardService {
 	@Override
 	public List<FitnessBoardVO> list(Criteria criteria) throws Exception {
 		
+		log.info(criteria);
+		
 		return mapper.list(criteria);
 	}
 

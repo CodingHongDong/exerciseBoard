@@ -31,15 +31,15 @@ public class FitnessBoardController {
 		
 		List<FitnessBoardVO> list = fitnessBoardServiceImpl.list(criteria);
 		
-		log.info("게시판 리스트");
+		log.info(list.size());
+		
+		Pagenation pagenation = new Pagenation();
+		
+		pagenation.setCriteria(criteria);
+		pagenation.setTotalCount(fitnessBoardServiceImpl.totalCount());
 		
 		model.addAttribute("vo", list);
-		
-		Pagenation pageNation = new Pagenation();
-		pageNation.setCriteria(criteria);
-		pageNation.setTotalCount(fitnessBoardServiceImpl.totalCount());
-		
-		model.addAttribute("pagenation", pageNation);
+		model.addAttribute("pagenation", pagenation);
 		
 		return "hong/fitnessboard/list";
 	}

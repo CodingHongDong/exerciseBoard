@@ -5,10 +5,7 @@
 
 	<!-- list -->
 	<select id="list" resultType="com.hong.fitness.vo.FitnessBoardVO">	
-        SELECT * FROM fitnessboard 
-        ORDER BY no DESC 
-        LIMIT #{pageStart}, #{perPageNum}
-       
+       select * from fitnessboard order by no desc limit #{pageStart}, #{perPageNum}
 	</select>
 
 	<!-- 전체 데이터 개수 가져오기 -->

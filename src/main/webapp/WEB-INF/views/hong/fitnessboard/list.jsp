@@ -63,6 +63,7 @@ img {
 
 <div class="container">
 <h2>Fitness 게시판 > 리스트</h2>
+${pagenation}
 <table class="table">
 	<tr>
 		<th>번호</th>
@@ -81,30 +82,6 @@ img {
 		<td>${vo.hit}</td>
 	</tr>
 	</c:forEach>
-	
-	<div class="row">
-		<div class="col-sm-4 col-md-4"></div>
-		<div class="col-sm-4 col-md-4">
-			<ul class="btn-group pagination" style="margin-left: 50%">
-				<c:if test="${pagenation.prev}">
-					<li>
-						<a href='<c:url value="/fitnessboard/list?page=${pagenation.startPage -1 }"/>'><i class="fa fa-chevron-left"></i></a>
-					</li>
-				</c:if>
-				<c:forEach begin="${pagenation.startPage}" end="${pagenation.endPage}" var="pageNum">
-					<li>
-						<a href='<c:url value="/fitenssboard/list/page=${pageNum}"/>'><i class="fa">${pageNum}</i></a>
-					</li>
-				</c:forEach>
-				<c:if test="${pagenation.next && pagenation.endPage > 0}">
-					<li>
-						<a href='<c:url value="/fitnessboard/list/page=${pagenation.endPage + 1}"'><i class="fa fa-chevron-right"></i></a>
-					</li>
-				</c:if>
-			</ul>		
-		</div>
-		<div class="col-sm-4 col-md-4"></div>
-	</div>
 	
 	<tr>
 		<td colspan="5">

@@ -17,7 +17,7 @@ public class Pagenation {
 		this.criteria = criteria;
 	}
 	public int getTotalCount() {
-		return totalCount;
+		return this.totalCount;
 	}
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
@@ -26,7 +26,7 @@ public class Pagenation {
 	
 	private void calcData() {
 		// 끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 페이지 번호의 갯수) * 화면에 보여질 페이지 번호의 갯수
-		endPage = (int) (Math.ceil(criteria.getPage() / displayPageNum) * displayPageNum);
+		endPage = (int) (Math.ceil(criteria.getPage() / (double) displayPageNum) * displayPageNum);
 		
 		// 시작 페이지 번호 = (끝 페이지 번호 - 화면에 보여질 페이지 번호의 갯수) + 1
 		startPage = (endPage - displayPageNum) + 1;
@@ -42,36 +42,34 @@ public class Pagenation {
 	
 	
 	public int getStartPage() {
-		return startPage;
+		return this.startPage;
 	}
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
 	public int getEndPage() {
-		return endPage;
+		return this.endPage;
 	}
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
 	public boolean isPrev() {
-		return prev;
+		return this.prev;
 	}
 	public void setPrev(boolean prev) {
 		this.prev = prev;
 	}
 	public boolean isNext() {
-		return next;
+		return this.next;
 	}
 	public void setNext(boolean next) {
 		this.next = next;
 	}
 	public int getDisplayPageNum() {
-		return displayPageNum;
+		return this.displayPageNum;
 	}
 	public void setDisplayPageNum(int displayPageNum) {
 		this.displayPageNum = displayPageNum;
 	}
-	
-	
 	
 }
