@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hong.fitness.service.FitnessBoardService;
 import com.hong.fitness.vo.FitnessBoardVO;
-import com.hong.util.domain.Criteria;
-import com.hong.util.domain.Pagenation;
+import com.hong.util.domain.PageObject;
+
 
 import lombok.extern.log4j.Log4j;
 
@@ -27,19 +27,14 @@ public class FitnessBoardController {
 	
 	// 게시판 리스트
 	@GetMapping("/list.do")
-	public String list(Model model, Criteria criteria) throws Exception {
+	public String list(Model model, PageObject pageObject) throws Exception {
 		
-		List<FitnessBoardVO> list = fitnessBoardServiceImpl.list(criteria);
+		List<FitnessBoardVO> list = fitnessBoardServiceImpl.list(pageObject);
 		
 		log.info(list.size());
 		
-		Pagenation pagenation = new Pagenation();
-		
-		pagenation.setCriteria(criteria);
-		pagenation.setTotalCount(fitnessBoardServiceImpl.totalCount());
-		
 		model.addAttribute("vo", list);
-		model.addAttribute("pagenation", pagenation);
+		model.addAttribute("pageObject", pageObject);
 		
 		return "hong/fitnessboard/list";
 	}
@@ -69,13 +64,13 @@ public class FitnessBoardController {
 	
 	// 게시판 글쓰기 처리
 	@PostMapping("/write.do")
-	public String write(FitnessBoardVO vo) throws Exception {
+	public String write(FitnessBoardVO vo, int perPageNum) throws Exception {
 		
 		log.info("게시판 글쓰기 처리 vo : " + vo);
 		
 		fitnessBoardServiceImpl.write(vo);
 		
-		return "redirect:list.do";
+		return "redirect:list.do?perPageNum=" + perPageNum;
 	}
 	
 	// 게시판 글수정 폼
@@ -90,23 +85,25 @@ public class FitnessBoardController {
 	
 	// 게시판 글수정 처리
 	@PostMapping("/update.do")
-	public String update(FitnessBoardVO vo) throws Exception {
+	public String update(FitnessBoardVO vo, PageObject pageObject) throws Exception {
 		
 		log.info("게시판 글 수정 처리 vo : " + vo);
 		
 		fitnessBoardServiceImpl.update(vo);
 		
-		return "redirect:view.do?no=" + vo.getNo();
+		return "redirect:view.do?no=" + vo.getNo()
+				+ "&page=" + pageObject.getPage()
+				+ "&perPageNum=" + pageObject.getPerPageNum();
 	}
 	
 	// 게시판 글삭제
 	@GetMapping("/delete.do")
-	public String delete(FitnessBoardVO vo) throws Exception {
+	public String delete(FitnessBoardVO vo, int perPageNum) throws Exception {
 		
 		log.info("게시판 삭제 : " + vo);
 		
 		fitnessBoardServiceImpl.delete(vo.getNo());
 		
-		return "redirect:list.do";
+		return "redirect:list.do?perPageNum=" + perPageNum;
 	}
 }

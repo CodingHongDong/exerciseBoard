@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.hong.fitness.mapper.FitnessBoardMapper;
 import com.hong.fitness.vo.FitnessBoardVO;
-import com.hong.util.domain.Criteria;
+import com.hong.util.domain.PageObject;
 
 import lombok.extern.log4j.Log4j;
 
@@ -21,17 +21,13 @@ public class FitnessBoardServiceImpl implements FitnessBoardService {
 	
 	// 게시판 리스트
 	@Override
-	public List<FitnessBoardVO> list(Criteria criteria) throws Exception {
+	public List<FitnessBoardVO> list(PageObject pageObject) throws Exception {
 		
-		log.info(criteria);
+		pageObject.setTotalRow(mapper.getTotalRow(pageObject));
 		
-		return mapper.list(criteria);
-	}
-
-	@Override
-	public int totalCount() throws Exception {
+		log.info(pageObject);
 		
-		return mapper.totalCount();
+		return mapper.list(pageObject);
 	}
 	
 	// 게시판 글보기

@@ -13,16 +13,17 @@
 <meta charset="UTF-8">
 <style type="text/css">
 body {
-	background-color: #e6e5dc;
+	background-color: #afe0b3;
 }
 </style>
-<title>Free Board</title>
+<title>Fitness Board</title>
 </head>
 <body>
 <div class="container">
-<h2>Free Board > 글수정</h2>
+<h2>Fitness Board > 글수정</h2>
 <form action="update.do" method="post">
-<input type="hidden" name="no" value="${param.no}">
+<input type="hidden" name="page" value="${param.page }">
+<input type="hidden" name="perPageNum" value="${param.perPageNum }">
 <table class="table">
 	<tr>
 		<th>번호</th>

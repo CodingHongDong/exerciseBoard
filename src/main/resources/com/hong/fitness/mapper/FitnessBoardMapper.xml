@@ -5,11 +5,11 @@
 
 	<!-- list -->
 	<select id="list" resultType="com.hong.fitness.vo.FitnessBoardVO">	
-       select * from fitnessboard order by no desc limit #{pageStart}, #{perPageNum}
+select * from fitnessboard order by no desc limit #{startRow}, #{perPageNum}
 	</select>
 
 	<!-- 전체 데이터 개수 가져오기 -->
-	<select id="totalCount" resultType="Integer">
+	<select id="getTotalRow" resultType="int">
 		select count(*) from fitnessboard
 	</select>
 
