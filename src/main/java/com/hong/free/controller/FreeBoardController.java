@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hong.free.service.FreeBoardService;
 import com.hong.free.vo.FreeBoardVO;
+import com.hong.util.domain.PageObject;
 
 import lombok.extern.log4j.Log4j;
 
@@ -24,13 +25,14 @@ public class FreeBoardController {
 	
 	// 게시판 리스트
 	@GetMapping("/list.do")
-	public String list(Model model) throws Exception {
+	public String list(Model model, PageObject pageObject) throws Exception {
 		
-		List<FreeBoardVO> list = freeBoardServiceImpl.list();
+		List<FreeBoardVO> list = freeBoardServiceImpl.list(pageObject);
 		
 		log.info("게시판 리스트");
 		
 		model.addAttribute("vo", list);
+		model.addAttribute("pageObject", pageObject);
 		
 		return "hong/freeboard/list";
 	}

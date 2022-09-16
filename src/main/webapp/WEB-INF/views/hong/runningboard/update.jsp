@@ -22,7 +22,8 @@ body {
 <div class="container">
 <h2>Running Board > 글수정</h2>
 <form action="update.do" method="post">
-<input type="hidden" name="no" value="${param.no}">
+<input type="hidden" name="page" value="${param.page }">
+<input type="hidden" name="perPageNum" value="${param.perPageNum }">
 <table class="table">
 	<tr>
 		<th>번호</th>

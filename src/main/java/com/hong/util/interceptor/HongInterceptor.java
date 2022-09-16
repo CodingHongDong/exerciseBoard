@@ -32,41 +32,34 @@ public class HongInterceptor extends HandlerInterceptorAdapter{
 
 	// main
 	authMap.put("/hong/home.do", 1);
-	
+		
 	// Fitness 게시판 - 보기, 등록, 수정, 삭제 - 회원 : 1
-	authMap.put("/fitness/list.do", 1);
-	authMap.put("/fitness/view.do", 1);
-	authMap.put("/fitness/write.do", 1);
-	authMap.put("/fitness/update.do", 1);
-	authMap.put("/fitness/delete.do", 1);
-	
-	// Fitness 게시판 - 보기, 등록, 수정, 삭제 - 회원 : 1
-	authMap.put("/fitness/list.do", 1);
-	authMap.put("/fitness/view.do", 1);
-	authMap.put("/fitness/write.do", 1);
-	authMap.put("/fitness/update.do", 1);
-	authMap.put("/fitness/delete.do", 1);
+	authMap.put("/hong/fitnessboard/list.do", 1);
+	authMap.put("/hong/fitnessboard/view.do", 1);
+	authMap.put("/hong/fitnessboard/write.do", 1);
+	authMap.put("/hong/fitnessboard/update.do", 1);
+	authMap.put("/hong/fitnessboard/delete.do", 1);
 	
 	// Running 게시판 - 보기, 등록, 수정, 삭제 - 회원 : 1
-	authMap.put("/running/list.do", 1);
-	authMap.put("/running/view.do", 1);
-	authMap.put("/running/write.do", 1);
-	authMap.put("/running/update.do", 1);
-	authMap.put("/running/delete.do", 1);
+	authMap.put("/hong/runningboard/list.do", 1);
+	authMap.put("/hong/runningboard/view.do", 1);
+	authMap.put("/hong/runningboard/write.do", 1);
+	authMap.put("/hong/runningboard/update.do", 1);
+	authMap.put("/hong/runningboard/delete.do", 1);
 	
 	// Pilates 게시판 - 보기, 등록, 수정, 삭제 - 회원 : 1
-	authMap.put("/pilates/list.do", 1);
-	authMap.put("/pilates/view.do", 1);
-	authMap.put("/pilates/write.do", 1);
-	authMap.put("/pilates/update.do", 1);
-	authMap.put("/pilates/delete.do", 1);
+	authMap.put("/hong/pilatesboard/list.do", 1);
+	authMap.put("/hong/pilatesboard/view.do", 1);
+	authMap.put("/hong/pilatesboard/write.do", 1);
+	authMap.put("/hong/pilatesboard/update.do", 1);
+	authMap.put("/hong/pilatesboard/delete.do", 1);
 
 	// Free 게시판 - 보기, 등록, 수정, 삭제 - 회원 : 1
-	authMap.put("/free/list.do", 1);
-	authMap.put("/free/view.do", 1);
-	authMap.put("/free/write.do", 1);
-	authMap.put("/free/update.do", 1);
-	authMap.put("/free/delete.do", 1);
+	authMap.put("/hong/freeboard/list.do", 1);
+	authMap.put("/hong/freeboard/view.do", 1);
+	authMap.put("/hong/freeboard/write.do", 1);
+	authMap.put("/hong/freeboard/update.do", 1);
+	authMap.put("/hong/freeboard/delete.do", 1);
 	}
 	
 	

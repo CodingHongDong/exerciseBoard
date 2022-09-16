@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hong.running.service.RunningBoardService;
 import com.hong.running.vo.RunningBoardVO;
+import com.hong.util.domain.PageObject;
 
 import lombok.extern.log4j.Log4j;
 
@@ -25,13 +26,14 @@ public class RunningBoardController {
 	
 	// 게시판 리스트
 	@GetMapping("/list.do")
-	public String list(Model model) throws Exception {
+	public String list(Model model, PageObject pageObject) throws Exception {
 		
-		List<RunningBoardVO> list = runningBoardServiceImpl.list();
+		List<RunningBoardVO> list = runningBoardServiceImpl.list(pageObject);
 		
-		log.info("게시판 리스트");
+		log.info("게시판 리스트" + list.size());
 		
 		model.addAttribute("vo", list);
+		model.addAttribute("pageObject", pageObject);
 		
 		return "hong/runningboard/list";
 	}

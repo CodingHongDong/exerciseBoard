@@ -3,11 +3,12 @@ package com.hong.free.service;
 import java.util.List;
 
 import com.hong.free.vo.FreeBoardVO;
+import com.hong.util.domain.PageObject;
 
 public interface FreeBoardService {
 
 	// 게시판 리스트
-	public List<FreeBoardVO> list() throws Exception;
+	public List<FreeBoardVO> list(PageObject pageObject) throws Exception;
 	
 	// 게시판 글보기
 	public FreeBoardVO view(long no) throws Exception;

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.hong.running.mapper.RunningBoardMapper;
 import com.hong.running.vo.RunningBoardVO;
+import com.hong.util.domain.PageObject;
 
 @Service
 public class RunningBoardServiceImpl implements RunningBoardService {
@@ -16,9 +17,11 @@ public class RunningBoardServiceImpl implements RunningBoardService {
 	private RunningBoardMapper mapper;
 	
 	@Override
-	public List<RunningBoardVO> list() throws Exception {
-		// TODO Auto-generated method stub
-		return mapper.list();
+	public List<RunningBoardVO> list(PageObject pageObject) throws Exception {
+		
+		pageObject.setTotalRow(mapper.getTotalRow(pageObject));
+		
+		return mapper.list(pageObject);
 	}
 
 	@Override

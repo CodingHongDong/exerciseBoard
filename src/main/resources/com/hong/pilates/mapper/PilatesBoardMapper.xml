@@ -5,12 +5,11 @@
 
 	<!-- list -->
 	<select id="list" resultType="com.hong.pilates.vo.PilatesBoardVO">
-		select no, title, memberId, regDate, hit  
-		from pilatesboard order by no desc  
+select * from pilatesboard order by no desc limit #{startRow}, #{perPageNum}
 	</select>
 
 	<!-- 전체 데이터 개수 가져오기 -->
-	<select id="getTotalRow" resultType="java.lang.Long">
+	<select id="getTotalRow" resultType="int">
 		select count(*) from pilatesboard
 	</select>
 

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="pageNav" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,9 @@
 $(function() {
 	$(".dataRow").click(function() {
 		var no = $(this).find(".no").text();
-		location = "view.do?no=" + no
+		location = "view.do?no=" + no + "&inc=1"
+				+ "&page=${pageObject.page}"
+				+ "&perPageNum=${pageObject.perPageNum}"
 	});
 });
 </script>
@@ -68,13 +71,29 @@ img {
 		<td>${vo.hit}</td>
 	</tr>
 	</c:forEach>
-	
+
 	<tr>
 		<td colspan="5">
-			<a href="write.do" class="btn btn-default">글쓰기</a>
+			<a href="write.do?perPageNum=${pageObject.perPageNum}" class="btn btn-default">글쓰기</a>
 		</td>
 	</tr>
+	
+	<c:if test="${pageObject.totalPage > 1 }">
+	<!-- 전체 페이지가 2페이지 이상이면 보여주는 부분 -->
+		<tr>
+			<td colspan="5">
+				<pageNav:pageNav listURI="list.do" 
+					pageObject="${pageObject }" />
+			</td>
+		</tr>
+	</c:if>
+	
 </table>
 </div>
+
+	<!-- footer -->
+	<footer class="container-fluid text-center navbar navbar-inverse navbar-fixed-bottom">
+		<p>CodingHongDong</p>
+	</footer>
 </body>
 </html>

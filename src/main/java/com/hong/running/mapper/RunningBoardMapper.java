@@ -3,14 +3,15 @@ package com.hong.running.mapper;
 import java.util.List;
 
 import com.hong.running.vo.RunningBoardVO;
+import com.hong.util.domain.PageObject;
 
 public interface RunningBoardMapper {
 
 	// 게시판 리스트
-	public List<RunningBoardVO> list() throws Exception;
+	public List<RunningBoardVO> list(PageObject pageObject) throws Exception;
 	
 	// 전체 데이터 개수
-	public long getTotalRow() throws Exception;
+	public int getTotalRow(PageObject pageObject) throws Exception;
 	
 	// 게시판 글보기
 	public RunningBoardVO view(long no) throws Exception;

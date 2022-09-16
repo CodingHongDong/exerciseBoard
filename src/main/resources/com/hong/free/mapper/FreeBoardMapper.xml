@@ -5,12 +5,11 @@
 
 	<!-- list -->
 	<select id="list" resultType="com.hong.free.vo.FreeBoardVO">
-		select no, title, memberId, regDate, hit  
-		from freeboard order by no desc  
+select * from freeboard order by no desc limit #{startRow}, #{perPageNum}  
 	</select>
 
 	<!-- 전체 데이터 개수 가져오기 -->
-	<select id="getTotalRow" resultType="java.lang.Long">
+	<select id="getTotalRow" resultType="int">
 		select count(*) from freeboard
 	</select>
 

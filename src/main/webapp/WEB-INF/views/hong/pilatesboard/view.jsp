@@ -62,9 +62,12 @@ $(function() {
 	
 </table>
 	<div>
-		<a href="update.do?no=${vo.no}" class="btn btn-default">수정</a>
-		<a href="delete.do?no=${vo.no}"	class="btn btn-default" id="deleteBtn">삭제</a>
-		<a href="list.do" class="btn btn-default">리스트</a>
+		<a href="update.do?no=${vo.no}&page=${param.page}&perPageNum=${param.perPageNum}&key=${param.key}
+										&word=${param.word}" 
+		class="btn btn-default">수정</a>
+		<a href="delete.do?no=${vo.no}&perPageNum=${param.perPageNum}" 
+			class="btn btn-default" id="deleteBtn">삭제</a>
+		<a href="list.do?page=${param.page}&perPageNum=${param.perPageNum}" class="btn btn-default">리스트</a>
 	</div>
 </div>
 </body>

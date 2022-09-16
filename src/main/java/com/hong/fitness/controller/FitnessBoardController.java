@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,7 +28,7 @@ public class FitnessBoardController {
 	
 	// 게시판 리스트
 	@GetMapping("/list.do")
-	public String list(Model model, PageObject pageObject) throws Exception {
+	public String list(Model model, @ModelAttribute PageObject pageObject) throws Exception {
 		
 		List<FitnessBoardVO> list = fitnessBoardServiceImpl.list(pageObject);
 		
@@ -70,7 +71,7 @@ public class FitnessBoardController {
 		
 		fitnessBoardServiceImpl.write(vo);
 		
-		return "redirect:list.do?perPageNum=" + perPageNum;
+		return "redirect:list.do?page=1&perPageNum=" + perPageNum;
 	}
 	
 	// 게시판 글수정 폼
@@ -92,6 +93,7 @@ public class FitnessBoardController {
 		fitnessBoardServiceImpl.update(vo);
 		
 		return "redirect:view.do?no=" + vo.getNo()
+				+ "&inc=0"
 				+ "&page=" + pageObject.getPage()
 				+ "&perPageNum=" + pageObject.getPerPageNum();
 	}

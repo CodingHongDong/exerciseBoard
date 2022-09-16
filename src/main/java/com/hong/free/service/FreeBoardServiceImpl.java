@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.hong.free.mapper.FreeBoardMapper;
 import com.hong.free.vo.FreeBoardVO;
+import com.hong.util.domain.PageObject;
 
 @Service
 public class FreeBoardServiceImpl implements FreeBoardService {
@@ -16,9 +17,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	private FreeBoardMapper mapper;
 	
 	@Override
-	public List<FreeBoardVO> list() throws Exception {
-		// TODO Auto-generated method stub
-		return mapper.list();
+	public List<FreeBoardVO> list(PageObject pageObject) throws Exception {
+		
+		pageObject.setTotalRow(mapper.getTotalRow(pageObject));
+		
+		return mapper.list(pageObject);
 	}
 
 	@Override

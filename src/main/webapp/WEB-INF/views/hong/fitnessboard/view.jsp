@@ -62,7 +62,7 @@ $(function() {
 	
 </table>
 	<div>
-		<a href="update.do?no=${vo.no}&page=${param.page}&perPageNum=${param.perPageNum}&key=${param.key}
+		<a href="update.do?no=${vo.no}&inc=0&&page=${param.page}&perPageNum=${param.perPageNum}&key=${param.key}
 										&word=${param.word}" 
 		class="btn btn-default">수정</a>
 		<a href="delete.do?no=${vo.no}&perPageNum=${param.perPageNum}" 
