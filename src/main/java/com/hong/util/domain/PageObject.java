@@ -31,7 +31,7 @@ public class PageObject {
 		this.perPageNum = perPageNum;
 		// 시작 줄번호와 끝 줄번호 계산
 		// 현재 페이지의 이전 페이지 까지 데이터를 skip시키고 그 다음 번호 시작 번호로 한다.
-		startRow = (page-1)*perPageNum + 1;
+		startRow = (page-1)*perPageNum;
 		endRow = startRow + perPageNum -1;
 		
 		// JSP 하단 부분에 몇개의 페이지를 표시할지 정한다.
@@ -103,7 +103,7 @@ public class PageObject {
 		
 		// 시작 줄번호와 끝 줄번호 계산
 		// 현재 페이지의 이전 페이지 까지 데이터를 skip시키고 그 다음 번호 시작 번호로 한다.
-		startRow = (page-1)*perPageNum + 1;
+		startRow = (page-1)*perPageNum;
 		endRow = startRow + perPageNum -1;
 		
 		// 리스트 화면 하단 부분에 나타내는 페이지를 처리하기 위한 데이터들을 계산

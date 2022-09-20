@@ -15,33 +15,33 @@ select * from fitnessboard <include refid="search" /> order by no desc limit #{s
 
 	<!-- 검색 조건 처리 sql-->
 	<sql id="search">
-		<if test="word != null">
+		<if test="word != null and word != ''.toString()">
 		where  
 		<if test="key == 't'.toString()">
-			title regexp ''#{word}''
+			title regexp #{word}
 		</if>
 		<if test="key == 'c'.toString()">
-			content regexp '#{word}'
+			content regexp #{word}
 		</if>
 		<if test="key == 'w'.toString()">
-			memberId regexp '#{word}'
+			memberId regexp #{word}
 		</if>
 		<if test="key == 'tc'.toString()">
-			title regexp '#{word}' 
-			or content regexp '#{word}'
+			title regexp #{word} 
+			or content regexp #{word}
 		</if>
 		<if test="key == 'tw'.toString()">
-			title regexp '#{word}' 
-			or memberId regexp '#{word}'
+			title regexp #{word} 
+			or memberId regexp #{word}
 		</if>
 		<if test="key == 'cw'.toString()">
-			content regexp '#{word}' 
-			or memberId regexp '#{word}'
+			content regexp #{word} 
+			or memberId regexp #{word}
 		</if>
 		<if test="key == 'tcw'.toString()">
-			title regexp '#{word}' 
-			or content regexp '#{word}' 
-			or memberId regexp '#{word}'
+			title regexp #{word} 
+			or content regexp #{word} 
+			or memberId regexp #{word}
 		</if>
 		</if>
 	</sql>

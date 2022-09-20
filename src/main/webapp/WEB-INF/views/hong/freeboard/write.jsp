@@ -22,6 +22,7 @@ body {
 <body>
 <h2>Free 게시판 > 글쓰기</h2>
 <form action="write.do" method="post">
+<input type="hidden" name="perPageNum" value="${param.perPageNum }">
 <div class="container">
 <table class="table">
 	<tr>

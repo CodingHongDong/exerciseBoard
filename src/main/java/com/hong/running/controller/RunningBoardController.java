@@ -63,13 +63,13 @@ public class RunningBoardController {
 	
 	// 게시판 글쓰기 처리
 	@PostMapping("/write.do")
-	public String write(RunningBoardVO vo) throws Exception {
+	public String write(RunningBoardVO vo, int perPageNum) throws Exception {
 		
 		log.info("게시판 글쓰기 처리 vo : " + vo);
 		
 		runningBoardServiceImpl.write(vo);
 		
-		return "redirect:list.do";
+		return "redirect:list.do?page=1&perPageNum=" + perPageNum;
 	}
 	
 	// 게시판 글수정 폼
@@ -84,23 +84,26 @@ public class RunningBoardController {
 	
 	// 게시판 글수정 처리
 	@PostMapping("/update.do")
-	public String update(RunningBoardVO vo) throws Exception {
+	public String update(RunningBoardVO vo, PageObject pageObject) throws Exception {
 		
 		log.info("게시판 글 수정 처리 vo : " + vo);
 		
 		runningBoardServiceImpl.update(vo);
 		
-		return "redirect:view.do?no=" + vo.getNo();
+		return "redirect:view.do?no=" + vo.getNo()
+				+ "&inc=0"
+				+ "&page=" + pageObject.getPage()
+				+ "&perPageNum=" + pageObject.getPerPageNum();
 	}
 	
 	// 게시판 글삭제
 	@GetMapping("/delete.do")
-	public String delete(RunningBoardVO vo) throws Exception {
+	public String delete(RunningBoardVO vo, int perPageNum) throws Exception {
 		
 		log.info("게시판 삭제 : " + vo);
 		
 		runningBoardServiceImpl.delete(vo.getNo());
 		
-		return "redirect:list.do";
+		return "redirect:list.do?perPageNum=" + perPageNum;
 	}
 }

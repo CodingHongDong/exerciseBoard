@@ -5,13 +5,46 @@
 
 	<!-- list -->
 	<select id="list" resultType="com.hong.pilates.vo.PilatesBoardVO">
-select * from pilatesboard order by no desc limit #{startRow}, #{perPageNum}
+select * from pilatesboard <include refid="search" /> order by no desc limit #{startRow}, #{perPageNum}
 	</select>
 
 	<!-- 전체 데이터 개수 가져오기 -->
 	<select id="getTotalRow" resultType="int">
-		select count(*) from pilatesboard
+		select count(*) from pilatesboard <include refid="search" />
 	</select>
+
+	<!-- 검색 조건 처리 sql-->
+	<sql id="search">
+		<if test="word != null and word != ''.toString()">
+		where  
+		<if test="key == 't'.toString()">
+			title regexp #{word}
+		</if>
+		<if test="key == 'c'.toString()">
+			content regexp #{word}
+		</if>
+		<if test="key == 'w'.toString()">
+			memberId regexp #{word}
+		</if>
+		<if test="key == 'tc'.toString()">
+			title regexp #{word} 
+			or content regexp #{word}
+		</if>
+		<if test="key == 'tw'.toString()">
+			title regexp #{word} 
+			or memberId regexp #{word}
+		</if>
+		<if test="key == 'cw'.toString()">
+			content regexp #{word} 
+			or memberId regexp #{word}
+		</if>
+		<if test="key == 'tcw'.toString()">
+			title regexp #{word} 
+			or content regexp #{word} 
+			or memberId regexp #{word}
+		</if>
+		</if>
+	</sql>
 
 	<!-- view -->
 	<select id="view" resultType="com.hong.pilates.vo.PilatesBoardVO">

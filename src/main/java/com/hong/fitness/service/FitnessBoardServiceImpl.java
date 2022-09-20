@@ -25,7 +25,7 @@ public class FitnessBoardServiceImpl implements FitnessBoardService {
 		
 		pageObject.setTotalRow(mapper.getTotalRow(pageObject));
 		
-		log.info(pageObject);
+		log.info("pageObject : " + pageObject);
 		
 		return mapper.list(pageObject);
 	}
