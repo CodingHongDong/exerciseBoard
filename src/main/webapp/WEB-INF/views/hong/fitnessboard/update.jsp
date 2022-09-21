@@ -42,7 +42,7 @@ body {
 	
 	<tr>
 		<th>작성자</th>
-		<td><input name="memberId" value="${vo.memberId}"></td>
+		<td><input name="memberId" value="${vo.memberId}" readonly="readonly"></td>
 	</tr>
 	
 	<tr>

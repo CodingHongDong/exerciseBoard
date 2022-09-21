@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <style type="text/css">
 body {
-	background-color: #ba54ae;
+	background-color: #e6e5dc;
 }
 </style>
 <title>Pilates Board</title>
