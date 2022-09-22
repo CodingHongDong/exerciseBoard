@@ -30,8 +30,6 @@ public class HongInterceptor extends HandlerInterceptorAdapter{
 	authMap.put("/notice/update.do", 0);
 	authMap.put("/notice/delete.do", 0);
 
-	// main
-	authMap.put("/hong/home.do", 1);
 		
 	// Fitness 게시판 - 보기, 등록, 수정, 삭제 - 회원 : 1
 	authMap.put("/hong/fitnessboard/list.do", 1);
@@ -54,12 +52,6 @@ public class HongInterceptor extends HandlerInterceptorAdapter{
 	authMap.put("/hong/pilatesboard/update.do", 1);
 	authMap.put("/hong/pilatesboard/delete.do", 1);
 
-	// Free 게시판 - 보기, 등록, 수정, 삭제 - 회원 : 1
-	authMap.put("/hong/freeboard/list.do", 1);
-	authMap.put("/hong/freeboard/view.do", 1);
-	authMap.put("/hong/freeboard/write.do", 1);
-	authMap.put("/hong/freeboard/update.do", 1);
-	authMap.put("/hong/freeboard/delete.do", 1);
 	}
 	
 	

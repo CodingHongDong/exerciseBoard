@@ -52,6 +52,14 @@ img {
 </style>
 </head>
 <body>
+
+<!-- 로고 -->
+<header>
+	<h1 class="text-center">
+		<a href="http://localhost/hong/home.do"><img src="<c:url value="/resources/user/dog.jpg"/>"></a>
+	</h1>
+</header>
+
 <div class="container">
 <h2>Free 게시판 > 리스트</h2>
 <div class="row" style="margin-bottom: 5px;">
