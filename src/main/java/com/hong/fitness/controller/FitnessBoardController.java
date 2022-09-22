@@ -50,12 +50,6 @@ public class FitnessBoardController {
 		
 		model.addAttribute("vo", fitnessBoardServiceImpl.view(no));
 		
-		String name = session.getId();
-		
-		session.setAttribute("sessionID", name);
-		
-		log.info("name : " + name);
-		
 		fitnessBoardServiceImpl.increase(no);
 		
 		return "hong/fitnessboard/view";

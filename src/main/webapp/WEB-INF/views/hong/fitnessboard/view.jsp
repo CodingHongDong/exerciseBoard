@@ -18,6 +18,7 @@ body {
 }
 </style>
 <script type="text/javascript">
+var sessionName = session.getId();
 
 $(function() {
 	$("#deleteBtn").click(function() {
@@ -63,8 +64,8 @@ $(function() {
 	
 </table>
 	<div>
-	<c:if test="${vo.memberId} == ${sessionID}">
-		<a href="update.do?no=${vo.no}&inc=0&&page=${param.page}&perPageNum=${param.perPageNum}&key=${param.key}
+	<c:if test="${vo.memberId == login.getId()}">
+		<a href="update.do?no=${vo.no}&inc=0&page=${param.page}&perPageNum=${param.perPageNum}&key=${param.key}
 										&word=${param.word}" 
 		class="btn btn-default">수정</a>
 		<a href="delete.do?no=${vo.no}&perPageNum=${param.perPageNum}" 

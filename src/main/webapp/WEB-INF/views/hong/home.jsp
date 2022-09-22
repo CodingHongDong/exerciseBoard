@@ -62,7 +62,7 @@ ul li a:hover {
 		<a style="color:#5ADB87" href="write.do">join</a>
 	</c:when>
 	<c:otherwise>
-		<b>${!empty login} &nbsp;&nbsp;</b>
+		<b>${!empty login}</b>
 		<a style="color: #D9418C" href="logout.do">logout</a>
 	</c:otherwise>
 </c:choose>
