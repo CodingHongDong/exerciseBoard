@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hong.fitness.service.FitnessBoardReplyServiceImpl;
 import com.hong.fitness.service.FitnessBoardService;
+import com.hong.fitness.vo.FitnessBoardReplyVO;
 import com.hong.fitness.vo.FitnessBoardVO;
 import com.hong.util.domain.PageObject;
 
@@ -27,6 +30,9 @@ public class FitnessBoardController {
 	
 	@Autowired
 	private FitnessBoardService fitnessBoardServiceImpl;
+	
+	@Autowired
+	private FitnessBoardReplyServiceImpl replyService;
 	
 	// 게시판 리스트
 	@GetMapping("/list.do")
@@ -44,13 +50,18 @@ public class FitnessBoardController {
 	
 	// 게시판 글보기
 	@GetMapping("/view.do")
-	public String view(long no, Model model, HttpSession session, FitnessBoardVO vo) throws Exception {
+	public String view(@RequestParam("no") long no, Model model, HttpSession session, FitnessBoardVO vo) throws Exception {
 		
 		log.info("fitness board 글보기 no : " + no);
 		
 		model.addAttribute("vo", fitnessBoardServiceImpl.view(no));
 		
 		fitnessBoardServiceImpl.increase(no);
+		
+		// 댓글 조회
+		List<FitnessBoardReplyVO> reply = replyService.replyList(no);
+		model.addAttribute("reply", reply);
+		
 		
 		return "hong/fitnessboard/view";
 	}
