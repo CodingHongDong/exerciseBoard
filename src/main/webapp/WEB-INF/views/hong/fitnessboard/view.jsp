@@ -18,12 +18,20 @@ body {
 }
 </style>
 <script type="text/javascript">
-var sessionName = session.getId();
-
 $(function() {
 	$("#deleteBtn").click(function() {
 		return confirm("정말 삭제하시겠습니까?");
 	});
+	
+	$(".replyDeleteBtn").on("click", function(){
+		location.href = "/hong/fitnessboard/view.do?no=${vo.no}"
+				+ "&inc=0"
+				+ "&page=${pageObject.page}"
+				+ "&perPageNum=${pageObject.perPageNum}"
+				+ "&key=${pageObject.key}"
+				+ "&word=${pageObject.word}"
+	});
+	
 })
 </script>
 <title>Fitness Board</title>
@@ -85,6 +93,10 @@ $(function() {
 					<p>${reply.content}</p>
 				</div>
 			</li>
+				<div>
+				  <button type="button" class="replyUpdateBtn">수정</button>
+				  <button type="button" class="replyDeleteBtn">삭제</button>
+				</div>
 		</c:forEach>
 	</ul>
 </div>

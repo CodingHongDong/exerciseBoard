@@ -1,7 +1,11 @@
 package com.hong.fitness.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,12 +32,20 @@ public class FitnessBoardReplyController {
 		
 		log.info(fbvo);
 		
-		return "redirect:hong/fitnessboard/view?no=?" + fbvo.getNo();
+		return "redirect:http://localhost/hong/fitnessboard/view.do?no=" + fbvo.getNo() +"&inc=0&page=1&perPageNum=10&key=&word=";
 	}
 	
 	
 	// 댓글 수정
 	
 	// 댓글 삭제
-	
+	@GetMapping("/delete.do")
+	public String postDelete(FitnessBoardReplyVO fbvo, Model model) throws Exception {
+		
+		log.info("댓글 삭제");
+		
+		fbrservice.replyDelete(fbvo);
+		
+		return "redirect:http://localhost/hong/fitnessboard/view.do?no=" + fbvo.getNo();
+	}
 }
