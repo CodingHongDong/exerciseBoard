@@ -23,15 +23,14 @@ $(function() {
 		return confirm("정말 삭제하시겠습니까?");
 	});
 	
-	$(".replyDeleteBtn").on("click", function(){
-		location.href = "/hong/fitnessboard/view.do?no=${vo.no}"
-				+ "&inc=0"
-				+ "&page=${pageObject.page}"
-				+ "&perPageNum=${pageObject.perPageNum}"
-				+ "&key=${pageObject.key}"
-				+ "&word=${pageObject.word}"
-	});
-	
+	$(".replyDeleteBtn").click(function(){
+			location.href = "/hong/fitnessboard/view.do?no=${vo.no}"
+							+ "&inc=0"
+							+ "&page=${pageObject.page}"
+							+ "&perPageNum=${pageObject.perPageNum}"
+							+ "&key=${pageObject.key}"
+							+ "&word=${pageObject.word}"
+		});
 })
 </script>
 <title>Fitness Board</title>
@@ -85,7 +84,9 @@ $(function() {
 
 <!-- 댓글 기능 -->
 <div class="container" >
-	<ul>	
+	<form action="/reply/delete.do" method="get">
+	<input type="hidden" name="no" value="${fbvo.no}">
+	<ul>
 		<c:forEach items="${reply}" var="reply">
 			<li>
 				<div>
@@ -94,11 +95,12 @@ $(function() {
 				</div>
 			</li>
 				<div>
-				  <button type="button" class="replyUpdateBtn">수정</button>
-				  <button type="button" class="replyDeleteBtn">삭제</button>
+				  <button type="button" class="replyUpdateBtn btn btn-default">수정</button>
+				  <button type="submit" class="btn btn-default">삭제</button>
 				</div>
 		</c:forEach>
 	</ul>
+	</form>
 </div>
 <div class="container">
 	<form action="/reply/write.do" method="post">

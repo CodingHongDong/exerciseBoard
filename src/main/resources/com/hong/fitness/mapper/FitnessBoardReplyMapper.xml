@@ -24,8 +24,7 @@
 
 	<!-- 댓글 삭제 -->
 	<delete id="replyDelete">
-		delete from fitness_reply 
-		where rno = #{rno} and no = #{no}
+delete from fitness_reply where rno = #{rno}
 	</delete>
 
 </mapper>

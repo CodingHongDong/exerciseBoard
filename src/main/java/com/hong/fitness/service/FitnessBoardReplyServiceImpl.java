@@ -11,7 +11,10 @@ import com.hong.fitness.vo.FitnessBoardReplyVO;
 import com.hong.fitness.vo.FitnessBoardVO;
 import com.hong.util.domain.PageObject;
 
+import lombok.extern.log4j.Log4j;
+
 @Service
+@Log4j
 public class FitnessBoardReplyServiceImpl implements FitnessBoardReplyMapper {
 
 	@Inject
@@ -24,18 +27,19 @@ public class FitnessBoardReplyServiceImpl implements FitnessBoardReplyMapper {
 	}
 
 	@Override
-	public void replyWrite(FitnessBoardReplyVO frvo) throws Exception {
-		mapper.replyWrite(frvo);		
+	public void replyWrite(FitnessBoardReplyVO fbvo) throws Exception {
+		mapper.replyWrite(fbvo);		
 	}
 
 	@Override
-	public void replyModify(FitnessBoardReplyVO frvo) throws Exception {
-		mapper.replyModify(frvo);		
+	public void replyModify(FitnessBoardReplyVO fbvo) throws Exception {
+		mapper.replyModify(fbvo);		
 	}
 	
 	@Override
-	public void replyDelete(FitnessBoardReplyVO frvo) throws Exception {
-		mapper.replyDelete(frvo);		
+	public void replyDelete(int rno) throws Exception {
+		log.info("rno값 : " + rno);
+		mapper.replyDelete(rno);		
 	}
 
 }

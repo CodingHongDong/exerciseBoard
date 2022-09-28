@@ -50,11 +50,12 @@ public class FitnessBoardController {
 	
 	// 게시판 글보기
 	@GetMapping("/view.do")
-	public String view(@RequestParam("no") long no, Model model, HttpSession session, FitnessBoardVO vo) throws Exception {
+	public String view(@RequestParam("no") long no, Model model, HttpSession session, FitnessBoardVO vo, PageObject pageObject) throws Exception {
 		
 		log.info("fitness board 글보기 no : " + no);
 		
 		model.addAttribute("vo", fitnessBoardServiceImpl.view(no));
+		model.addAttribute("pageObject", pageObject);
 		
 		fitnessBoardServiceImpl.increase(no);
 		

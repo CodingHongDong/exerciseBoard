@@ -10,11 +10,11 @@ public interface FitnessBoardReplyMapper {
 	public List<FitnessBoardReplyVO> replyList(long no) throws Exception;
 	
 	// 댓글 작성
-	public void replyWrite(FitnessBoardReplyVO frvo) throws Exception;
+	public void replyWrite(FitnessBoardReplyVO fbvo) throws Exception;
 	
 	// 댓글 수정
-	public void replyModify(FitnessBoardReplyVO frvo) throws Exception;
+	public void replyModify(FitnessBoardReplyVO fbvo) throws Exception;
 	
 	// 댓글 삭제
-	public void replyDelete(FitnessBoardReplyVO frvo) throws Exception;
+	public void replyDelete(int rno) throws Exception;
 }
