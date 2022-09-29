@@ -15,13 +15,13 @@ import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
-public class FitnessBoardReplyServiceImpl implements FitnessBoardReplyMapper {
+public class FitnessBoardReplyServiceImpl implements FitnessBoardReplyService {
 
 	@Inject
 	private FitnessBoardReplyMapper mapper;
 
 	@Override
-	public List<FitnessBoardReplyVO> replyList(long no) throws Exception {
+	public List<FitnessBoardReplyVO> replyList(int no) throws Exception {
 		
 		return mapper.replyList(no);
 	}
@@ -35,11 +35,10 @@ public class FitnessBoardReplyServiceImpl implements FitnessBoardReplyMapper {
 	public void replyModify(FitnessBoardReplyVO fbvo) throws Exception {
 		mapper.replyModify(fbvo);		
 	}
-	
+
 	@Override
-	public void replyDelete(int rno) throws Exception {
-		log.info("rno값 : " + rno);
-		mapper.replyDelete(rno);		
+	public void replyDelete(FitnessBoardReplyVO fbvo) throws Exception {
+		mapper.replyDelete(fbvo);
 	}
 
 }

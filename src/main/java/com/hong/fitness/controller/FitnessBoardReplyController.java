@@ -31,7 +31,7 @@ public class FitnessBoardReplyController {
 		
 		fbrservice.replyWrite(fbvo);
 		
-		log.info(fbvo);
+		log.info("댓글 작성 : " + fbvo);
 		
 		return "redirect:http://localhost/hong/fitnessboard/view.do?no=" + fbvo.getNo()
 				+ "&inc=0"
@@ -43,17 +43,19 @@ public class FitnessBoardReplyController {
 	// 댓글 수정
 	
 	// 댓글 삭제
-	@GetMapping("/delete.do")
-	public String replyDelete(FitnessBoardReplyVO fbvo, Model model, PageObject pageObject, long no) throws Exception {
+	@PostMapping("/delete.do")
+	public String replyDelete(FitnessBoardReplyVO fbvo, Model model, PageObject pageObject) throws Exception {
 		
-		fbrservice.replyDelete(fbvo.getRno());
 		
-		model.addAttribute("fbvo", fbrservice.replyList(no));
+		
+		fbrservice.replyDelete(fbvo);
+		
+		
 		model.addAttribute("pageObject", pageObject);
 		
 		log.info("댓글 삭제 fbvo.getRno() :" + fbvo.getRno() + ", fbvo.getNo() : " + fbvo.getNo());
 		
-		return "hong/fitnessboard/view.do?no=" + fbvo.getNo()
+		return "redirect:http://localhost/hong/fitnessboard/view.do?no=" + fbvo.getNo()
 				+ "&inc=0"
 				+ "&page=" + pageObject.getPage()
 				+ "&perPageNum=" + pageObject.getPerPageNum();

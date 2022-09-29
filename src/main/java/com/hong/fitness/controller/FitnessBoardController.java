@@ -50,7 +50,7 @@ public class FitnessBoardController {
 	
 	// 게시판 글보기
 	@GetMapping("/view.do")
-	public String view(@RequestParam("no") long no, Model model, HttpSession session, FitnessBoardVO vo, PageObject pageObject) throws Exception {
+	public String view(@RequestParam("no") int no, Model model, HttpSession session, FitnessBoardVO vo, PageObject pageObject) throws Exception {
 		
 		log.info("fitness board 글보기 no : " + no);
 		
@@ -122,4 +122,8 @@ public class FitnessBoardController {
 		
 		return "redirect:list.do?perPageNum=" + perPageNum;
 	}
+	
+	// 댓글 삭제 get
+	//public String replyDelete
+	
 }

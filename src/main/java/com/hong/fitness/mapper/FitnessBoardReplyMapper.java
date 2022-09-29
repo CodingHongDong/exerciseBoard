@@ -16,5 +16,5 @@ public interface FitnessBoardReplyMapper {
 	public void replyModify(FitnessBoardReplyVO fbvo) throws Exception;
 	
 	// 댓글 삭제
-	public void replyDelete(int rno) throws Exception;
+	public void replyDelete(FitnessBoardReplyVO fbvo) throws Exception;
 }
