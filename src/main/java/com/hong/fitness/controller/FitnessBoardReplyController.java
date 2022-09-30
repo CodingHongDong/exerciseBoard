@@ -42,7 +42,20 @@ public class FitnessBoardReplyController {
 	
 	// 댓글 수정
 	
-	// 댓글 삭제
+	
+	// 댓글 삭제 폼
+	@GetMapping("/delete.do")
+	public String replyDeleteForm(FitnessBoardReplyVO fbvo, Model model, PageObject pageObject) throws Exception {
+		
+		log.info("댓글 삭제 폼");
+		
+		model.addAttribute("replyDelete", fbrservice.replyList(fbvo.getRno()));
+		model.addAttribute("pageObject", pageObject);
+		
+		return "http://localhost/hong/fitnessboard/replyDelete";
+	}
+	
+	// 댓글 삭제 처리
 	@PostMapping("/delete.do")
 	public String replyDelete(FitnessBoardReplyVO fbvo, Model model, PageObject pageObject) throws Exception {
 		

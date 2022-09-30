@@ -31,6 +31,15 @@ $(function() {
 							+ "&key=${pageObject.key}"
 							+ "&word=${pageObject.word}"
 		});
+	
+	function deleteReply() {
+		$(".replyDeleteBtn").on("click", function(){
+			location.href = "/hong/fitnessboard/view?no=${vo.no}"
+							+ "&page=${pageObject.page}"
+							+ "&perPageNum=${pageObject.perPageNum}"
+		});
+	}
+	
 })
 </script>
 <title>Fitness Board</title>
@@ -85,7 +94,6 @@ $(function() {
 <!-- 댓글 기능 -->
 <div class="container" >
 	<form action="/reply/delete.do" method="post">
-	
 	<ul>
 		<c:forEach items="${reply}" var="reply">
 			<li>
@@ -93,13 +101,13 @@ $(function() {
 					<p>${reply.writer} / <fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd"/></p>
 					<p>${reply.content}</p>
 				</div>
-			</li>
 				<div>
-				  <input type="hidden" name="no" value="${reply.rno}">
-				  <button type="submit" class="btn btn-default">삭제</button>
-				  <a href="replyDelete.do?no=${vo.no}&page=${param.page}perPageNum=${param.perPageNum}" 
-			class="btn btn-default">삭삭제</a>
+				  <input type="hidden" name="no" value="${fbvo.no}">
+				   <button type="button" class="replyDeleteBtn btn btn-default" data-rno="${replyDelete.rno}">삭제</button> 
 				</div>
+			</li>
+		<a href="replyDelete.do?no=${vo.no}&inc=0&page=${param.page}perPageNum=${param.perPageNum}" 
+			class="btn btn-default">삭삭제</a>				
 		</c:forEach>
 	</ul>
 	</form>
